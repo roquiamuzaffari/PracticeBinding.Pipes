@@ -1,0 +1,25 @@
+<h1>passing data from parent to child component@Input() Decorator</h1>
+<app-child [names]="data"></app-child>
+
+
+
+
+
+<hr>
+<app-userdata (newItemEvent)="addItem($event)"></app-userdata>
+<h3>Parent component receiving value via @Output()</h3>
+
+<table class="table">
+  <thead>
+      <th>Name</th>
+      
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{item}}</td>
+      </tr>
+  </tbody>
+
+</table>
+<hr>
+

@@ -1,0 +1,192 @@
+<h2>(1) 1-Way data binding with interpolation</h2>
+<div>{{contact.firstName}} {{contact.lastName}}</div>
+<hr>
+<h2>(2) with *ngIf</h2>
+<p>Based on condition it will hide or show data</p>
+<div *ngIf="isUserLoggedIn">
+
+
+
+</div>
+<hr>
+<h2>(3) with *ngIf,Else template reference variable</h2>
+<div *ngIf="isUserLoggedIn; else error_msg" style="background-color: aquamarine;">
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+
+                <th>First Name</th>
+                <th>Last Name</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+    user loggedin successful
+    <hr>
+</div>
+<h3>interpolation with ngif,locgical condition,template variable,else]</h3>
+<ng-template #error_msg style="background-color: rgb(232, 154, 169);">
+    user not loggedin
+</ng-template>
+<hr>
+<h2>(4) with *ngIf,Else with logical operatoe (OR ),(AND),(NOT)</h2>
+<div *ngIf="isUserLoggedIn ||isUserLoggedOut" style="background-color: rgb(244, 172, 172);">
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+
+                <th>First Name</th>
+                <th>Last Name</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+<h1>ngFor,a with ngIf(first and last record)</h1>
+<table class="table">
+    <thead>
+        <th>Table with index value,first and last record</th>
+
+    </thead>
+    <ul>
+        <li *ngFor="let name of users;index as i;first as f;last as l">
+            <div *ngIf="f" style="background-color:blueviolet">this is first record</div>
+            <div>{{i}} {{name.firstName}}</div>
+            <div *ngIf="l" style="background-color:lightcyan">this is last record</div>
+
+        </li>
+    </ul>
+    <hr>
+    <h3>List with Even and Odd</h3>
+
+    <ul>
+        <li *ngFor="let name of users;index as i;even as e;odd as o">
+            <div *ngIf="e" style="background-color:rgb(198, 238, 140)">{{i}} {{name.firstName}}</div>
+            <div *ngIf="o" style="background-color:rgb(228, 191, 164)">{{i}} {{name.lastName}}</div>
+        </li>
+    </ul>
+    <hr>
+    
+    <h3>(5)ngSwitch,ngSwitchCase,ngSwitchDefault</h3>
+     <div [ngSwitch]="products" style="background-color: rgb(109, 218, 202);">
+     <div *ngSwitchCase=" 'toys'">Display Toys</div>
+     <div *ngSwitchCase="'clothing'">Display Clothes</div>
+     <div *ngSwitchCase="'mobile'">Display mobile</div>
+     <div *ngSwitchDefault>Procucts are uploding</div>
+
+    </div>
+    <hr>
+    <h2>(6)ngStyle</h2>
+    <div [ngStyle]="{'background-color':'green','color':'#fff'}">this is ngStyle</div>
+
+
+    <hr>
+    <h2>(7)property binding</h2>
+    <div *ngIf="isUserLoggedIn" style="background-color: aquamarine;">
+        <div [innerHTML]="contact.firstName"></div>
+    </div>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+
+                <th>First Name</th>
+                <th>Last Name</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+
+
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+
+
+
+
+    <h2>(8)Attribute Binding</h2>
+    <h3>one of the type of one way data Binding</h3>
+    <a href="#">This is a link</a>
+    <div *ngIf="isUserLoggedIn">
+        <div [innerHTML]="contact.firstName"></div>
+    </div>
+    <table style="background-color:rgb(215, 243, 102) ;">
+        <tr>
+            <td>id</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+
+        </tr>
+        <tr>
+            <td [attr.colspan]="colVal">id</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+
+        </tr>
+    </table>
+    <table class="table table-success table-striped">
+        <tr>
+            <th>id</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+        </tr>
+
+        <tr *ngFor="let name of users">
+            <td [title]="name.id">{{name.id}}</td>
+            <td>{{name.firstName}}</td>
+            <td>{{name.lastName}}</td>
+
+        </tr>
+    </table>
+    <h3>(9)Event Binding</h3>
+    <button (click)="sayHi()">click here to say Hi</button>
+    <div (mouseover)="highlightBGcolor(1,3,4)">Highlight</div>
+    <input type="text" (focus)="inputBox();">
+    <hr>
+    <hr>
+    <hr>
+    <h2>(10) 2-Ways Data Binding [()]</h2>
+    <h3 class="c1">{{title}}</h3>
+    <label for="">Username:</label> <br>
+    <input [(ngModel)]="username">
+    <!--<div>{{username}}</div>-->
+    <div *ngIf="month>10">welcome {{username}}</div>
+    <hr>
+    <h2>(11)Built in pipes</h2>
+    <div>{{lowreCaseex |lowercase}}</div>
+    <div>{{dateExample | date}}</div>
+    <div>{{jsonExample | json}}</div>
+    <div>{{currencyExample | currency}}</div>
+    <div>{{percentExample | percent}}</div>
+    <hr>
+    <h2>Parameterizing pipes</h2>
+    <div>{{currencyExample | currency :'CAD'}}</div>
+    <div>{{dateExample | date: 'short'}}</div>
+    <div>{{dateExample | date: 'long'}}</div>
+    <hr>
+    <h2>Chaining Pipes</h2>
+    <div>{{dateExample | date:'long'|uppercase}}</div>

@@ -1,0 +1,7 @@
+<h2>Child component with @Output() decorator and Event Emitter</h2>
+
+<label for="item-input">Add Name:</label>
+<input type="text" id="item-input" #newItem>
+<button class="btn btn-primary" (click)="addNewItem(newItem.value)">Add name parent's list</button>
+
+
